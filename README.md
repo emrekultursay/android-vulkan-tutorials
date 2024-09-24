@@ -1,10 +1,13 @@
 Tutorial Samples
 ================
-A set of samples to illustrate Vulkan API on Android with Android Studio		
-To build on windows for tutorial02/03, copy/install ndk-r12 ( or better ) to a directory close to root dir ( C: ) to workaround command path 260 character limit issue; see tutorial02/03's build.gradle for details. To Build samples:
-- Inside Andriod, menu File --> New --> Import Project
-- Find your sample's build.gradle and open it
-This will force andrioid studio to create local.properties file to config your SDK and NDK location; if you see error during importing, open local.properties file and correct the NDK and SDK location, then re-sync.
+A set of samples to illustrate Vulkan API on Android with Android Studio.
+
+To build the samples:
+- Inside Android Studio, use File --> New --> Import Project
+- Find your sample's directory or `build.gradle` file, and open it
+
+This will force Andrioid Studio to create local.properties file to config your SDK location. If you see
+an Android SDK error during importing, you can open local.properties file and correct the SDK path.
 
 Other Resources:	
 Additional Android Studio/NDK samples:    
@@ -31,19 +34,25 @@ Refer to README.md under its directory
 
 Pre-requisites
 --------------
-- A device running Android 7.0 (API level 24) or higher
-- [Android Studio 3.0](https://developer.android.com/studio/index.html) or higher
-- Android NDK
+- A device running Android 8.0 (API level 26) or higher
+- [Android Studio Jellyfish](https://developer.android.com/studio/index.html) or higher
+- Android NDK r25c
     * [NDK](https://developer.android.com/ndk/downloads/index.html)
-    * SDK with the latest cmake package
+- CMake 3.22.1 from Android SDK
 
 Test Matrix
 ------------
-| Andrid Studio Version | cmake in SDK| NDK      | device  |
-|-----------------------|-------------|----------|---------|
-| 3.0.0                 | 3.6.4111459 | NDK-r16  | Pixel XL|
+| Andrid Studio         | CMake       | NDK      | Device          | API Level |
+|-----------------------|-------------|----------|-----------------|-----------|
+| Jellyfish 2023.3.1    | 3.22.1      | r25c     | Pixel 7 Pro     | 34        |
+| Jellyfish 2023.3.1    | 3.22.1      | r25c     | x86_64 Emulator | 31        |
 
-Known Issue:
+
+Known Issues
+------------
+
+On Windows, if you hit the maximum 260 character path limit issue, copy/install the NDK
+to a directory close to the file system root (e.g., `C:`).
 
 Getting Started
 ---------------
@@ -52,7 +61,7 @@ Getting Started
 
 License
 -------
-Copyright 2016 Google, Inc.
+Copyright 2024 Google, Inc.
 
 Licensed to the Apache Software Foundation (ASF) under one or more contributor
 license agreements.  See the NOTICE file distributed with this work for
