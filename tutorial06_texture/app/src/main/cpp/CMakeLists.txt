@@ -46,13 +46,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
     -std=c++11 -Wall -Wno-unused-variable \
     -Wno-delete-non-virtual-dtor -DVK_USE_PLATFORM_ANDROID_KHR")
 
-if (${ANDROID_ABI} STREQUAL "armeabi-v7a")
-    set(CMAKE_CXX_FLAGS} "${CMAKE_CXX_FLAGS} \
-        -mhard-float -D_NDK_MATH_NO_SOFTFP=1 -mfloat-abi=hard")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} \
-        -Wl,--no-warn-mismatch")
-endif()
-
 # requirement: prebuild shaderc with:
 #  cd  ${CMAKE_CURRENT_SOURCE_DIR} && mkdir -p shaderc && cd shaderc
 #  ${ANDROID_NDK}/ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=${ANDROID_NDK}/sources/third_party/shaderc/Android.mk APP_STL:=all APP_ABI:=all APP_PLATFORM:=android-26 libshaderc_combined

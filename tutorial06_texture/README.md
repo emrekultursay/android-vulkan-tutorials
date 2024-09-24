@@ -14,7 +14,7 @@ Pre-build shaderc with:
 ```
  mkdir -p  app/src/main/cpp/shaderc
  cd app/src/main/cpp/shaderc
- ${ndk_dir}/ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=${ANDROID_NDK}/sources/third_party/shaderc/Android.mk APP_STL:=${ANDROID_STL} APP_ABI:=all APP_PLATFORM:=${your-minSdkLevel} libshaderc_combined
+ ${ndk_dir}/ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=${ANDROID_NDK}/sources/third_party/shaderc/Android.mk APP_STL:=${ANDROID_STL} APP_ABI:=arm64-v8a,x86_64 APP_PLATFORM:=${your-minSdkLevel} libshaderc_combined
 ```
 Screenshot
 ------------
