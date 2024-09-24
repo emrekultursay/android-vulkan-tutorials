@@ -1,37 +1,28 @@
 apply plugin: 'com.android.library'
 
-/* Build Validation Layer source code in https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
-   Steps:
+/* Steps to setup Vulkan Validation Layers source code:
       1. cd tutorial03_traceable_layers/layerlib
       2. git clone --recursive https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
-      3. cd Vulkan-ValidationLayers/build-android
-      4. ./update_external_sources_android.sh --no-build
-        (use the update_external_sources_android.bat for Windows OS)
-      5. Switch to Studio IDE, sync the project and build etc
+      3. Switch to Studio IDE, sync the project and build etc
  */
 def LAYER_SRC=projectDir.toString() + '/Vulkan-ValidationLayers'
 android {
-    compileSdkVersion 31
-    ndkVersion '22.1.7171670'
+    compileSdkVersion 34
+    ndkVersion '25.2.9519653'
 
     defaultConfig {
-        minSdkVersion 24
-        targetSdkVersion 31
+        minSdkVersion 26
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
-        ndk.abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        ndk.abiFilters 'arm64-v8a', 'x86_64'
         externalNativeBuild {
-            // I could not get ndk-build with Application.mk, so for now we need to
-            // pass all settings in the Application.mk as command line parameters to ndk-build.
-            ndkBuild.arguments "NDK_MODULE_PATH=${LAYER_SRC}/build-android",
-                               "NDK_PROJECT_PATH=${LAYER_SRC}/build-android",
-                               'APP_MODULES=VkLayer_khronos_validation',
-                               'APP_PLATFORM=android-26',
-                               'NDK_TOOLCHAIN_VERSION=clang',
-                               'APP_STL=c++_static',
-                               'NDK_DEBUG=1', 'APP_OPTIM=debug',
-                               '-j8'   // set up the right cpu count, should but do not know
-                                       // how to get it from org.gradle.workers.max
+            cmake {
+                // Flags taken from Vulkan Validation Layers build docs for Android at:
+                // https://github.com/KhronosGroup/Vulkan-ValidationLayers/blob/main/BUILD.md#building-for-android
+                arguments.add("-DANDROID_USE_LEGACY_TOOLCHAIN_FILE=NO")
+                arguments.add("-DUPDATE_DEPS=ON")
+            }
         }
     }
 
@@ -40,7 +31,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     externalNativeBuild {
-        ndkBuild.path "${LAYER_SRC}/build-android/jni/Android.mk"
+        cmake {
+            path "${LAYER_SRC}/CMakeLists.txt"
+            version "3.22.1"
+        }
     }
     buildTypes {
         release {
