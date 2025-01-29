@@ -42,10 +42,10 @@ Pre-requisites
 
 Test Matrix
 ------------
-| Andrid Studio         | CMake       | NDK      | Device          | API Level |
+| Android Studio        | CMake       | NDK      | Device          | API Level |
 |-----------------------|-------------|----------|-----------------|-----------|
 | Jellyfish 2023.3.1    | 3.22.1      | r25c     | Pixel 7 Pro     | 34        |
-| Jellyfish 2023.3.1    | 3.22.1      | r25c     | x86_64 Emulator | 31        |
+| Jellyfish 2023.3.1    | 3.22.1      | r25c     | x86_64 Emulator | 34        |
 
 
 Known Issues

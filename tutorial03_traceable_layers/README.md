@@ -26,14 +26,16 @@ The validation layer source code needs to be pulled in on command line before bu
 
 1. cd tutorial03_traceable_layers/layerlib
 2. git clone --recursive https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
-3. Now, at this point, open this sample with Android Studio with "Open an Existing Project" option
-4. Build the project, and start debugging (Run > Debug App). It can take 5-10 minutes to build on slower machines.
+3. Make sure the `cmake` binary is on your `PATH` environment variable.
+4. Open this sample with Android Studio with "Open an Existing Project" option
+5. Sync the project with Gradle Files. This can take 3-5 minutes to sync.
+6. Build the project, and start debugging (Run > Debug App). It can take 5-10 minutes to build.
 
 Once the app triggers validation layer assert (embedded on purpose inside this sample in the app), you can see the stack frames
 in the Android Studio IDE debugger. You can also step into the validation layer, and check the values of all variables.
 
 ## Future Work
-- Automically pull the source code automatically in Gradle.
+- Automatically pull the source code automatically in Gradle.
 
 # Screenshot
 ![screenshot](screenshot.png)
